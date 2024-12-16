@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Simulator</title>
+    <style>
+        /* Body */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Heading */
+        h1 {
+            color: blue;
+        }
+
+        /* Paragraph */
+        p {
+            color: black;
+        }
+
+        /* Budget */
+        #budget {
+            color: red;
+        }
+
+        /* Stock prices */
+        #stockPrices {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #stockPrices li {
+            color: black;
+        }
+
+        /* Select Stock */
+        label {
+            color: black;
+        }
+
+        select {
+            color: black;
+        }
+
+        /* Buttons */
+        button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        /* Inputs */
+        input[type="number"] {
+            padding: 8px;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        /* Portfolio */
+        #portfolio {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #portfolio th, #portfolio td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        #portfolio th {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stock Simulator</h1>
+    <p>Budget: $<span id="budget">100.00</span></p>
+    <p>Current Price:</p>
+    <ul id="stockPrices">
+        <!-- Stock prices will be dynamically populated here -->
+    </ul>
+
+    <label for="stockSelector">Select Stock:</label>
+    <select id="stockSelector">
+        <option value="0">$ABC</option>
+        <option value="1">$DEF</option>
+        <option value="2">$GHI</option>
+        <option value="3">$JKL</option>
+        <option value="4">$MNO</option>
+    </select>
+
+    <button onclick="buyStock()">Buy Stock</button>
+    <input type="number" id="buyAmount" placeholder="Amount">
+    
+    <button onclick="sellStock()">Sell Stock</button>
+    <input type="number" id="sellAmount" placeholder="Amount">
+
+    <h2>Portfolio</h2>
+    <table id="portfolio">
+        <tr>
+            <th>Stock</th>
+            <th>Quantity</th>
+            <th>Value</th>
+        </tr>
+    </table>
+
+    <script>
+        var budget = 100.00;
+        var stocks = [
+            { name: "$ABC", price: getRandomPrice(), quantity: 0 },
+            { name: "$DEF", price: getRandomPrice(), quantity: 0 },
+            { name: "$GHI", price: getRandomPrice(), quantity: 0 },
+            { name: "$JKL", price: getRandomPrice(), quantity: 0 },
+            { name: "$MNO", price: getRandomPrice(), quantity: 0 }
+        ];
+
+        function getRandomPrice() {
+            return (Math.random() * (10 - 5) + 5).toFixed(2);
+        }
+
+        function updateBudget(newBudget) {
+            document.getElementById('budget').innerText = newBudget.toFixed(2);
+        }
+
+        function updateStockPrices() {
+    var stockPricesList = document.getElementById('stockPrices');
+    stockPricesList.innerHTML = '';
+    stocks.forEach(function(stock) {
+        var listItem = document.createElement('li');
+        var link = document.createElement('a');
+        var symbol = stock.name.substring(1).toLowerCase(); // Remove $ and convert to lowercase
+        link.href = symbol + '.html'; // Adjusting the href to match the desired format
+        link.innerText = stock.name + ": $" + stock.price;
+        listItem.appendChild(link);
+        stockPricesList.appendChild(listItem);
+    });
+}
+
+
+
+        function updatePortfolio() {
+            var portfolioTable = document.getElementById('portfolio');
+            portfolioTable.innerHTML = '<tr><th>Stock</th><th>Quantity</th><th>Value</th></tr>';
+            var totalValue = 0;
+            stocks.forEach(function(stock) {
+                var value = stock.price * stock.quantity;
+                totalValue += value;
+                var row = '<tr><td>' + stock.name + '</td><td>' + stock.quantity + '</td><td>$' + value.toFixed(2) + '</td></tr>';
+                portfolioTable.innerHTML += row;
+            });
+            portfolioTable.innerHTML += '<tr><td colspan="2">Total Value:</td><td>$' + totalValue.toFixed(2) + '</td></tr>';
+        }
+
+        function buyStock() {
+            var amount = parseFloat(document.getElementById('buyAmount').value);
+            var selectedStockIndex = document.getElementById('stockSelector').value;
+            var selectedStock = stocks[selectedStockIndex];
+            var stockPrice = parseFloat(selectedStock.price);
+            
+            if (stockPrice * amount <= budget) {
+                // Update budget
+                budget -= stockPrice * amount;
+                updateBudget(budget);
+
+                // Update stock price (simulated)
+                selectedStock.price = (parseFloat(selectedStock.price) + Math.random()).toFixed(2);
+
+                // Update portfolio
+                selectedStock.quantity += amount;
+                updatePortfolio();
+            } else {
+                alert('Insufficient funds to buy stock.');
+            }
+        }
+
+        function sellStock() {
+            var amount = parseFloat(document.getElementById('sellAmount').value);
+            var selectedStockIndex = document.getElementById('stockSelector').value;
+            var selectedStock = stocks[selectedStockIndex];
+            var stockPrice = parseFloat(selectedStock.price);
+            
+            if (selectedStock.quantity >= amount) {
+                // Update budget
+                budget += stockPrice * amount;
+                updateBudget(budget);
+
+                // Update stock price (simulated)
+                selectedStock.price = (parseFloat(selectedStock.price) - Math.random()).toFixed(2);
+
+                // Update portfolio
+                selectedStock.quantity -= amount;
+                updatePortfolio();
+            } else {
+                alert('Insufficient quantity to sell.');
+            }
+        }
+
+        function updateStockPricesRandomly() {
+            stocks.forEach(function(stock) {
+                var change = (Math.random() * (2.00 - 0.01) + 0.01).toFixed(2);
+                if (Math.random() < 0.6) {
+                    stock.price = (parseFloat(stock.price) + parseFloat(change)).toFixed(2);
+                } else {
+                    stock.price = (parseFloat(stock.price) - parseFloat(change)).toFixed(2);
+                }
+            });
+            updateStockPrices();
+            updatePortfolio();
+        }
+
+        // Initial population of stock prices and portfolio
+        updateStockPrices();
+        updatePortfolio();
+
+        // Update stock prices every 10 seconds
+        setInterval(updateStockPricesRandomly, 10000);
+    </script>
+</body>
+</html>
+

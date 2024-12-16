@@ -1,0 +1,79 @@
+/* style.css */
+
+/* Body */
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading */
+h1 {
+    color: blue;
+}
+
+/* Paragraph */
+p {
+    color: black;
+}
+
+/* Budget */
+#budget {
+    color: yellow;
+}
+
+/* Stock prices */
+#stockPrices {
+    list-style-type: none;
+    padding: 0;
+}
+
+#stockPrices li {
+    color: black;
+}
+
+/* Select Stock */
+label {
+    color: black;
+}
+
+select {
+    color: black;
+}
+
+/* Buttons */
+button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+/* Inputs */
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid black;
+    margin-top: 10px;
+}
+
+/* Portfolio */
+#portfolio {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#portfolio th, #portfolio td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+#portfolio th {
+    background-color: blue;
+    color: white;
+}

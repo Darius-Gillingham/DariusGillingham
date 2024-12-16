@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Customer Report</h1>
+        <nav>
+            <a href="reports.html">Back to Reports</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Customer List</h2>
+            <table id="customer-table">
+                <thead>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Membership Date</th>
+                        <th>Recommendations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Video Rental Store</p>
+    </footer>
+    <script>
+        // Retrieve customer data from localStorage
+        const customers = JSON.parse(localStorage.getItem('customers')) || [];
+
+        // Get the table body element
+        const tableBody = document.getElementById('customer-table').getElementsByTagName('tbody')[0];
+
+        // Loop through each customer and create a table row
+        customers.forEach(customer => {
+            const row = tableBody.insertRow();
+
+            row.insertCell(0).textContent = customer.name;
+            row.insertCell(1).textContent = customer.address;
+            row.insertCell(2).textContent = customer.phone;
+            row.insertCell(3).textContent = customer.email;
+            row.insertCell(4).textContent = customer.membershipDate;
+            row.insertCell(5).textContent = customer.recommendations || 'N/A';
+        });
+    </script>
+</body>
+</html>
