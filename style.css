@@ -19,12 +19,12 @@ header {
 header h1 {
     margin: 0;
     font-size: 2rem;
-    color: white;
+    color: blue;
 }
 
 /* Navigation style */
 nav {
-    background-color: #222; 
+    background-color: #333; 
     padding: 10px;
     text-align: center;
 }
