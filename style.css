@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center; /* Center everything */
+    text-align: center; /* Center all text */
 }
 
 /* Paragraph */
@@ -104,10 +104,10 @@ form button:hover {
 
 /* Table styles */
 table {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
     border-collapse: collapse;
-    margin-top: 20px;
-    margin-bottom: 20px;
 }
 
 table th, table td {
@@ -140,7 +140,9 @@ footer {
     background-color: #444;
     padding: 20px;
     text-align: center;
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 footer p {
@@ -188,7 +190,7 @@ a[href^="mailto:"] {
     }
 
     p {
-        width: 80%; /* Increase width for better readability on mobile */
+        width: 100%; /* Increase width for better readability on mobile */
     }
 
     /* Increase width on mobile for other elements */
