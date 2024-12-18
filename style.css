@@ -13,7 +13,7 @@ p {
     text-align: center; /* Ensure text inside is centered */
     padding: 10px; /* Add some padding for spacing */
     box-sizing: border-box; /* Ensure padding doesn't overflow the width */
-    background-color: #f0f0f0; /* Very light grey background */
+    background-color: #e0e0e0; /* Very light grey background */
 }
 
 /* Headings */
