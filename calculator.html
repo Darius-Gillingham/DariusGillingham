@@ -7,19 +7,34 @@
     <style>
         body {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+        }
+        .portfolio-link {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+        .portfolio-link a {
+            font-weight: bold;
+            text-decoration: underline;
+            color: red;
         }
         .calculator {
             background: #fff;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            width: 300px;
+            width: 90%;
+            max-width: 300px;
         }
         .display {
             background: #333;
@@ -61,31 +76,29 @@
     </style>
 </head>
 <body>
-
-     <h1 style="text-align: center;"><a href="portfolio.html" style="font-weight: bold; text-decoration: underline; color: red;">Return To Portfolio Projects</a></h1>
-   <b> </b> <div class="calculator">
+    <div class="portfolio-link">
+        <a href="portfolio.html">Return To Portfolio Projects</a>
+    </div>
+    <b></b>
+    <div class="calculator">
         <div class="display" id="display">0</div>
         <div class="buttons">
             <button onclick="clearDisplay()">C</button>
             <button onclick="appendValue('')" disabled></button>
             <button onclick="deleteLast()">DEL</button>
             <button class="operator" onclick="appendValue('/')">/</button>
-            
             <button onclick="appendValue('7')">7</button>
             <button onclick="appendValue('8')">8</button>
             <button onclick="appendValue('9')">9</button>
             <button class="operator" onclick="appendValue('*')">*</button>
-
             <button onclick="appendValue('4')">4</button>
             <button onclick="appendValue('5')">5</button>
             <button onclick="appendValue('6')">6</button>
             <button class="operator" onclick="appendValue('-')">-</button>
-
             <button onclick="appendValue('1')">1</button>
             <button onclick="appendValue('2')">2</button>
             <button onclick="appendValue('3')">3</button>
             <button class="operator" onclick="appendValue('+')">+</button>
-
             <button onclick="appendValue('0')">0</button>
             <button onclick="appendValue('.')">.</button>
             <button class="equal" onclick="calculateResult()">=</button>
