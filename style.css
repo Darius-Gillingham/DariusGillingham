@@ -5,15 +5,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    text-align: center; /* Center everything */
 }
 
 /* Paragraph */
 p {
-    width: 40%; /* Limit the width to 2/3 of the parent element */
-    text-align: center; /* Ensure text inside is centered */
-    padding: 10px; /* Add some padding for spacing */
-    box-sizing: border-box; /* Ensure padding doesn't overflow the width */
-    background-color: #e0e0e0; /* Very light grey background */
+    width: 60%; /* Increase width on mobile */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #e0e0e0;
+    margin: 0 auto; /* Center align paragraphs */
 }
 
 /* Headings */
@@ -24,8 +26,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     border-radius: 5px;
     margin: 20px auto;
-    width: 90%; /* Use relative width for responsiveness */
-    max-width: 800px; /* Limit the maximum width */
+    width: 90%; /* Ensure the heading is centered */
+    max-width: 800px;
 }
 
 /* Navigation style */
@@ -35,15 +37,15 @@ nav {
     text-align: center;
     border-radius: 5px;
     margin: 20px auto;
-    width: 90%; /* Use relative width */
+    width: 90%;
     max-width: 800px;
 }
 
 nav a {
-    color: #89CFF0; /* Light blue */
+    color: #89CFF0;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1rem; /* Slightly smaller font size for better scaling */
+    font-size: 1rem;
     display: inline-block;
     text-align: center;
 }
@@ -93,7 +95,7 @@ form button {
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 1rem; /* Adjust font size for mobile */
+    font-size: 1rem;
 }
 
 form button:hover {
@@ -116,21 +118,21 @@ table th, table td {
 }
 
 table th {
-    background-color: #4B0082; /* Indigo color for header */
+    background-color: #4B0082; /* Indigo color */
     color: white;
     font-weight: bold;
 }
 
 table td {
-    background-color: #e0e0e0; /* Light grey background */
+    background-color: #e0e0e0;
 }
 
 table tr:nth-child(even) {
-    background-color: #f0f0f0; /* Slightly darker grey for even rows */
+    background-color: #f0f0f0;
 }
 
 table tr:hover {
-    background-color: #ddd; /* Highlight row on hover */
+    background-color: #ddd;
 }
 
 /* Footer styles */
@@ -146,15 +148,27 @@ footer p {
     color: white;
 }
 
+/* Email links */
+a[href^="mailto:"] {
+    word-wrap: break-word;
+    display: inline-block;
+    width: 100%;
+    text-align: center; /* Ensure the links are centered */
+}
+
 /* Responsive design using media queries */
 @media (max-width: 768px) {
+    body {
+        text-align: center;
+    }
+
     nav a {
         display: block; /* Stack navigation links vertically */
         margin: 10px 0;
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-size: 1.5rem; /* Reduce heading size */
+        font-size: 1.5rem;
     }
 
     form {
@@ -166,11 +180,23 @@ footer p {
     }
 
     table th, table td {
-        font-size: 0.9rem; /* Slightly smaller font size for table */
+        font-size: 0.9rem; /* Smaller font size for table */
     }
 
     main {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 10px;
+    }
+
+    p {
+        width: 80%; /* Increase width for better readability on mobile */
+    }
+
+    /* Increase width on mobile for other elements */
+    form, nav, footer {
+        width: 100%;
+    }
+
+    footer {
+        padding: 20px;
     }
 }
-
