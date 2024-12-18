@@ -8,7 +8,7 @@ body {
 /* Paragraph */
 p {
     float: right; /* Float the paragraph to the right */
-    width: 66.66%; /* Limit the width to 2/3 of the parent element */
+    width: 40.00%; /* Limit the width to 2/3 of the parent element */
     margin: 0 auto; /* Center the floated paragraph */
     text-align: center; /* Ensure text inside is centered */
     padding: 10px; /* Add some padding for spacing */
@@ -18,7 +18,7 @@ p {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: #89CFF0; /* Light blue */
+    color: #4B0082; /* indigo color */
     background-color: #F5F5DC; /* Light beige */
     text-align: center;
     padding: 10px;
