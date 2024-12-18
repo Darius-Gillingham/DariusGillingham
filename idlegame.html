@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incremental Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+      .portfolio-link {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 1.2rem;
+        }
+        .portfolio-link a {
+            font-weight: bold;
+            text-decoration: underline;
+            color: red;
+        }
+      
+        #balance {
+            margin-top: 20px;
+        }
+        #assets {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .asset-item {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .asset-item img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .asset-item button {
+            margin-right: 10px;
+        }
+        .asset-progress-bar {
+            width: 200px;
+            height: 20px;
+            border: 1px solid #000;
+            margin-top: 10px;
+        }
+        .asset-progress-bar .progress {
+            width: 0%;
+            height: 100%;
+            background-color: green;
+        }
+        .asset-count {
+            margin-right: 20px;
+        }
+        .asset-return {
+            margin-right: 10px;
+        }
+        .asset-profit {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Incremental Game</h1>
+   <div class="portfolio-link">
+        <a href="portfolio.html">Return To Portfolio Projects</a>
+    </div>
+    <div>
+        <button id="increment-button" onclick="incrementMoney()">Increment Money</button>
+        <span id="balance">$0.00</span>
+    </div>
+    <div id="assets">
+        <div class="asset-item">
+            <img src="asset1.jpg" alt="Asset 1">
+            <span class="asset-return" id="asset1-return">+2</span>
+            <button onclick="purchaseAsset(1)" id="asset1-button">Buy Asset 1 ($<span id="asset1-cost">10.00</span>)</button>
+            <span class="asset-count" id="asset1-count">0</span>
+            <span class="asset-profit" id="asset1-profit">Profit:  </span> <span> &emsp; </span>
+            <div class="asset-progress-bar">
+                <div class="progress" id="asset1-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var money = 0;
+        var assetCounts = [0, 0, 0];
+        var assetPrices = [10, 20, 30];
+        var progressBars = [false, false, false];
+        var assetReturns = [2, 5, 10]; // Return values for each asset
+
+        function incrementMoney() {
+            money++;
+            updateMoneyDisplay();
+        }
+
+        function purchaseAsset(assetIndex) {
+            var cost = assetPrices[assetIndex - 1];
+            if (money >= cost) {
+                money -= cost;
+                assetCounts[assetIndex - 1]++;
+                updateMoneyDisplay();
+                updateAssetCountDisplay(assetIndex);
+                updateAssetPrice(assetIndex);
+                updateAssetReturnDisplay(assetIndex);
+                updateAssetProfitDisplay(assetIndex);
+
+                if (!progressBars[assetIndex - 1]) {
+                    startAssetProgress(assetIndex);
+                    progressBars[assetIndex - 1] = true;
+                }
+            }
+        }
+
+        function updateMoneyDisplay() {
+            document.getElementById('balance').textContent = '$' + money.toFixed(2);
+        }
+
+        function updateAssetCountDisplay(assetIndex) {
+            document.getElementById('asset' + assetIndex + '-count').textContent = assetCounts[assetIndex - 1];
+        }
+
+        function updateAssetPrice(assetIndex) {
+            assetPrices[assetIndex - 1] = 10 + 10 ** (assetCounts[assetIndex - 1] / 10);
+            document.getElementById('asset' + assetIndex + '-cost').textContent = assetPrices[assetIndex - 1].toFixed(2);
+        }
+
+        function updateAssetReturnDisplay(assetIndex) {
+            document.getElementById('asset' + assetIndex + '-return').textContent = '+' + assetReturns[assetIndex - 1];
+        }
+
+        function updateAssetProfitDisplay(assetIndex) {
+            var profit = assetReturns[assetIndex - 1] * assetCounts[assetIndex - 1];
+            document.getElementById('asset' + assetIndex + '-profit').textContent = 'Profit: $' + profit.toFixed(2);
+        }
+
+        function incrementMoneyOnReset(assetCount) {
+            var reward = assetCount * 2;
+            money += reward;
+            updateMoneyDisplay();
+        }
+
+        function startAssetProgress(assetIndex) {
+            var progressBar = document.getElementById('asset' + assetIndex + '-progress');
+            var width = 0;
+
+            var interval = setInterval(frame, 20);
+
+            function frame() {
+                if (width >= 100) {
+                    width = 0;
+                    progressBar.style.width = width + '%';
+
+                    var assetCount = assetCounts[assetIndex - 1];
+                    incrementMoneyOnReset(assetCount);
+                } else {
+                    width += 0.5;
+                    progressBar.style.width = width + '%';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
