@@ -1,3 +1,4 @@
+/* Body */
 body {
     background-color: white;
     color: black;
@@ -5,26 +6,29 @@ body {
     margin: 0;
     padding: 0;
 }
+
 /* Paragraph */
 p {
-
-    width: 40.00%; /* Limit the width to 2/3 of the parent element */
+    width: 40%; /* Limit the width to 40% of the parent element */
     text-align: center; /* Ensure text inside is centered */
     padding: 10px; /* Add some padding for spacing */
     box-sizing: border-box; /* Ensure padding doesn't overflow the width */
-    background-color: #e0e0e0; /* Very light grey background */
+    background-color: #e0e0e0; /* Slightly darker grey background */
+    margin: 10px 0; /* Add margin to space out paragraphs */
+    display: block; /* Ensure paragraph behaves like a block element */
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-    color: #4B0082; /* indigo color */
+    color: #4B0082; /* Indigo color */
     background-color: #F5F5DC; /* Light beige */
     text-align: center;
     padding: 10px;
     border-radius: 5px;
-    margin: 20px auto;
+    margin: 20px auto; /* Center the headings */
     width: 90%; /* Use relative width for responsiveness */
     max-width: 800px; /* Limit the maximum width */
+    display: block; /* Ensure headings are block-level elements */
 }
 
 /* Navigation style */
@@ -36,13 +40,14 @@ nav {
     margin: 20px auto;
     width: 90%; /* Use relative width */
     max-width: 800px;
+    display: block; /* Ensure navigation is a block element */
 }
 
 nav a {
     color: #89CFF0; /* Light blue */
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1rem; /* Slightly smaller font size for better scaling */
+    font-size: 1rem;
     display: inline-block;
     text-align: center;
 }
@@ -57,7 +62,7 @@ main {
     width: 90%;
     max-width: 1200px;
     margin: 20px auto;
-    text-align: center;
+    text-align: left; /* Align main content to the left */
 }
 
 /* Form styles */
@@ -67,7 +72,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
-    width: 90%; /* Use relative width */
+    width: 90%;
     max-width: 600px;
 }
 
@@ -92,7 +97,7 @@ form button {
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 1rem; /* Adjust font size for mobile */
+    font-size: 1rem;
 }
 
 form button:hover {
@@ -110,7 +115,7 @@ table th, table td {
     padding: 10px;
     border: 1px solid #555;
     text-align: left;
-    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    font-size: 0.9rem;
 }
 
 table th {
@@ -147,22 +152,22 @@ footer p {
     }
 
     h1, h2, h3, h4, h5, h6 {
-        font-size: 1.5rem; /* Reduce heading size */
+        font-size: 1.5rem;
     }
 
     form {
-        padding: 15px; /* Reduce padding */
+        padding: 15px;
     }
 
     form button {
-        font-size: 0.9rem; /* Smaller button font size */
+        font-size: 0.9rem;
     }
 
     table th, table td {
-        font-size: 0.8rem; /* Further reduce table text size */
+        font-size: 0.8rem;
     }
 
     main {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 10px;
     }
 }
