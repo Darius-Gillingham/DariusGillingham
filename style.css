@@ -19,9 +19,9 @@ p {
 }
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     color: #4B0082; /* Indigo color */
-    background-color: #F5F5DC; /* Light beige */
+    background-color: #A8D5BA; /* Light pastel green background */
     text-align: center;
     padding: 10px;
     border-radius: 5px;
@@ -29,6 +29,18 @@ h1, h2, h3, h4, h5, h6 {
     width: 90%; /* Ensure the heading is centered */
     max-width: 800px;
 }
+
+h3, h4, h5, h6 {
+    color: #4B0082; /* Indigo color */
+    background-color: #F5F5DC; /* Light beige background */
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 90%; /* Ensure the heading is centered */
+    max-width: 800px;
+}
+
 
 /* Navigation style */
 nav {
