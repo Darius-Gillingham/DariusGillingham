@@ -7,7 +7,7 @@ body {
 }
 /* Paragraph */
 p {
-    float: right; /* Float the paragraph to the right */
+
     width: 40.00%; /* Limit the width to 2/3 of the parent element */
     margin: 0 auto; /* Center the floated paragraph */
     text-align: center; /* Ensure text inside is centered */
