@@ -2,6 +2,8 @@ body {
     background-color: white;
     color: black;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 /* Headings */
@@ -12,7 +14,8 @@ h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     border-radius: 5px;
     margin: 20px auto;
-    max-width: 800px; /* Optional for better layout control */
+    width: 90%; /* Use relative width for responsiveness */
+    max-width: 800px; /* Limit the maximum width */
 }
 
 /* Navigation style */
@@ -22,14 +25,15 @@ nav {
     text-align: center;
     border-radius: 5px;
     margin: 20px auto;
-    max-width: 800px; /* Optional for better layout control */
+    width: 90%; /* Use relative width */
+    max-width: 800px;
 }
 
 nav a {
     color: #89CFF0; /* Light blue */
-    margin: 0 15px;
+    margin: 0 10px;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Slightly smaller font size for better scaling */
     display: inline-block;
     text-align: center;
 }
@@ -41,9 +45,10 @@ nav a:hover {
 /* Main content */
 main {
     padding: 20px;
+    width: 90%;
     max-width: 1200px;
     margin: 20px auto;
-    text-align: center; /* Centers text inside main content */
+    text-align: center;
 }
 
 /* Form styles */
@@ -53,6 +58,7 @@ form {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 0 auto;
+    width: 90%; /* Use relative width */
     max-width: 600px;
 }
 
@@ -77,7 +83,7 @@ form button {
     border: none;
     color: white;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1rem; /* Adjust font size for mobile */
 }
 
 form button:hover {
@@ -95,6 +101,7 @@ table th, table td {
     padding: 10px;
     border: 1px solid #555;
     text-align: left;
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
 }
 
 table th {
@@ -115,9 +122,38 @@ footer {
     background-color: #444;
     padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
 footer p {
     margin: 0;
     color: white;
+}
+
+/* Responsive design using media queries */
+@media (max-width: 768px) {
+    nav a {
+        display: block; /* Stack navigation links vertically */
+        margin: 10px 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 1.5rem; /* Reduce heading size */
+    }
+
+    form {
+        padding: 15px; /* Reduce padding */
+    }
+
+    form button {
+        font-size: 0.9rem; /* Smaller button font size */
+    }
+
+    table th, table td {
+        font-size: 0.8rem; /* Further reduce table text size */
+    }
+
+    main {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
 }
